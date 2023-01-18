@@ -6,7 +6,7 @@ Please refer to [`feature_demo.ipynb`](feature_demo.ipynb) for a demo on running
 
 If you utilize our models or data, please cite
 
-```
+```bibtex
 @inproceedings{driver2023didymosnet,
   title={Efficient Feature Description for Small Body Relative Navigation using Binary Convolutional Neural Networks},
   author={Driver, Travis and Tsiotras, Panagiotis},

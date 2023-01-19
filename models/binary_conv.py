@@ -25,8 +25,9 @@ class BinaryQuantize(Function):
 class BinaryConv2d(nn.Conv2d):
     def __init__(self, in_channels, out_channels, kernel_size, stride=1, padding=0, dilation=1, groups=1, bias=True):
         super().__init__(in_channels, out_channels, kernel_size, stride, padding, dilation, groups, bias)
-        self.k = torch.tensor([10]).float().cuda()
-        self.t = torch.tensor([0.1]).float().cuda()
+        self.device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
+        self.k = torch.tensor([10]).float().to(self.device)
+        self.t = torch.tensor([0.1]).float().to(self.device)
 
     def forward(self, a):
         w = self.weight

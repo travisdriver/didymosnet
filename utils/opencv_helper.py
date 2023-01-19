@@ -339,7 +339,7 @@ class MatcherWrapper(object):
                     init_matches1[i][0].distance / (init_matches1[i][1].distance + 1e-12)
                 )  # add epsilon to avoid division by zero
 
-        if type(cv_kpts1) is list and type(cv_kpts2) is list:
+        if isinstance(cv_kpts1, (list, tuple)) and isinstance(cv_kpts2, (list, tuple)):
             good_kpts1 = np.array([cv_kpts1[m.queryIdx].pt for m in good_matches])
             good_kpts2 = np.array([cv_kpts2[m.trainIdx].pt for m in good_matches])
         elif type(cv_kpts1) is np.ndarray and type(cv_kpts2) is np.ndarray:
@@ -354,7 +354,7 @@ class MatcherWrapper(object):
                 good_kpts2,
                 cv2.RANSAC,
                 err_thld,
-                0.999,
+                0.9999999,
             )
             # n_inlier = np.count_nonzero(mask)
             # print(info, "n_putative", len(good_matches), "n_inlier", n_inlier)
